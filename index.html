@@ -39,7 +39,9 @@ nav a:hover{color:var(--fire2)}
 .lang{display:flex;gap:4px}
 .lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:4px 9px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600}
 .lang button.on{background:var(--fire);border-color:var(--fire);color:#111}
-@media(max-width:820px){nav a{display:none}}
+nav a.app{background:var(--fire);color:#111;padding:7px 14px;border-radius:4px;font-weight:700}
+nav a.app:hover{background:var(--fire2);color:#111}
+@media(max-width:820px){nav a{display:none}nav a.app{display:inline-block}nav .lang{display:none}}
 
 /* Hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
@@ -101,6 +103,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <a href="#servicos" data-i18n="nav_services"></a>
       <a href="#galeria" data-i18n="nav_gallery"></a>
       <a href="#contacto" data-i18n="nav_contact"></a>
+      <a href="#app" class="app" data-i18n="nav_app"></a>
       <div class="lang">
         <button data-l="pt">PT</button><button data-l="en">EN</button><button data-l="de">DE</button>
       </div>
@@ -148,6 +151,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="card"><h3 data-i18n="s5_h"></h3><p data-i18n="s5_p"></p></div>
       <div class="card"><h3 data-i18n="s6_h"></h3><p data-i18n="s6_p"></p></div>
     </div>
+  </div>
+</section>
+
+<section id="app">
+  <div class="wrap two">
+    <div>
+      <h2 data-i18n="app_h"></h2>
+      <p data-i18n="app_p1"></p>
+      <p data-i18n="app_p2"></p>
+      <p style="margin-top:26px"><!-- APP-LINK: href ersetzen --><a class="btn" id="appLink" href="#app" data-i18n="app_btn"></a></p>
+    </div>
+    <div class="card"><h3 data-i18n="app_box_h"></h3><p data-i18n="app_box_p"></p></div>
   </div>
 </section>
 
@@ -212,7 +227,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <script>
 var T={
 pt:{
-nav_about:"Sobre",nav_services:"Serviços",nav_gallery:"Trabalhos",nav_contact:"Contacto",
+nav_app:"Descarregar app",nav_about:"Sobre",nav_services:"Serviços",nav_gallery:"Trabalhos",nav_contact:"Contacto",
 hero_kicker:"Metalurgia e forja · Colos, Odemira",
 hero_text:"Serralharia à medida, do desenho à montagem. Tradição do ferro forjado com tecnologia moderna.",
 hero_cta:"Pedir orçamento",hero_cta2:"Ver trabalhos",
@@ -227,7 +242,7 @@ s3_h:"Escadas e passadiços",s3_p:"Escadas, passadiços e interiores completos e
 s4_h:"Alpendres, pérgolas e vedações",s4_p:"Estruturas para exterior que duram décadas.",
 s5_h:"Escultura e decoração",s5_p:"Peças decorativas forjadas à mão, como raias, rosas e relevos martelados.",
 s6_h:"Facas e ferramentas",s6_p:"Facas e ferramentas forjadas à mão.",
-gal_h:"Trabalhos",gal_lead:"Uma seleção dos nossos trabalhos.",
+app_h:"App de planeamento",app_p1:"Planeie as suas portas e portões no telemóvel. A app ajuda-o a preparar medidas e ideias antes de falar connosco.",app_p2:"Descarregue-a de graça e experimente.",app_btn:"Descarregar app",app_box_h:"Para portas e portões",app_box_p:"Pense primeiro, peça orçamento depois. Mostre-nos o seu plano e fazemos a peça à medida.",gal_h:"Trabalhos",gal_lead:"Uma seleção dos nossos trabalhos.",
 course_h:"Cursos de forja",
 course_p1:"Queremos abrir a forja a cursos de metalurgia tradicional.",
 course_p2:"Assim, cada um pode aprender a fazer as suas próprias ferramentas. E o ofício passa à geração seguinte.",
@@ -241,7 +256,7 @@ pv_h:"Privacidade",pv_p:"Este site não usa cookies nem rastreio. Se enviar o fo
 foot_coop:"Parte da"
 },
 en:{
-nav_about:"About",nav_services:"Services",nav_gallery:"Work",nav_contact:"Contact",
+nav_app:"App download",nav_about:"About",nav_services:"Services",nav_gallery:"Work",nav_contact:"Contact",
 hero_kicker:"Metalwork and blacksmithing · Colos, Odemira",
 hero_text:"Made-to-measure metalwork, from design to installation. Traditional forged iron meets modern technology.",
 hero_cta:"Request a quote",hero_cta2:"See our work",
@@ -256,7 +271,7 @@ s3_h:"Staircases and walkways",s3_p:"Staircases, walkways and whole interiors in
 s4_h:"Porches, pergolas and fences",s4_p:"Outdoor structures built to last for decades.",
 s5_h:"Sculpture and decoration",s5_p:"Hand-forged decorative pieces, such as manta rays, roses and hammered reliefs.",
 s6_h:"Knives and tools",s6_p:"Hand-forged knives and tools.",
-gal_h:"Our work",gal_lead:"A selection of our work.",
+app_h:"Planning app",app_p1:"Plan your doors and gates on your phone. The app helps you prepare measurements and ideas before you talk to us.",app_p2:"Download it for free and try it.",app_btn:"App download",app_box_h:"For doors and gates",app_box_p:"Plan first, ask for a quote after. Show us your plan and we build the piece to measure.",gal_h:"Our work",gal_lead:"A selection of our work.",
 course_h:"Forging courses",
 course_p1:"We hope to open the forge to courses in traditional metalworking.",
 course_p2:"That way people can learn to make their own tools. And the craft passes to the next generation.",
@@ -270,7 +285,7 @@ pv_h:"Privacy",pv_p:"This site uses no cookies and no tracking. If you send the 
 foot_coop:"Part of"
 },
 de:{
-nav_about:"Über uns",nav_services:"Leistungen",nav_gallery:"Arbeiten",nav_contact:"Kontakt",
+nav_app:"App-Download",nav_about:"Über uns",nav_services:"Leistungen",nav_gallery:"Arbeiten",nav_contact:"Kontakt",
 hero_kicker:"Metallbau und Schmiedearbeiten · Colos, Odemira",
 hero_text:"Metallbau nach Maß, von der Planung bis zur Montage. Traditionelles Schmiedeeisen trifft moderne Technik.",
 hero_cta:"Angebot anfragen",hero_cta2:"Arbeiten ansehen",
@@ -285,7 +300,7 @@ s3_h:"Treppen und Stege",s3_p:"Treppen, Stege und ganze Innenausbauten aus Eisen
 s4_h:"Vordächer, Pergolen und Zäune",s4_p:"Konstruktionen für draußen, die Jahrzehnte halten.",
 s5_h:"Skulptur und Dekoration",s5_p:"Von Hand geschmiedete Zierstücke, etwa Rochen, Rosen und gehämmerte Reliefs.",
 s6_h:"Messer und Werkzeug",s6_p:"Von Hand geschmiedete Messer und Werkzeuge.",
-gal_h:"Unsere Arbeiten",gal_lead:"Eine Auswahl unserer Arbeiten.",
+app_h:"Planungs-App",app_p1:"Planen Sie Ihre Türen und Tore am Handy. Die App hilft Ihnen, Maße und Ideen vorzubereiten, bevor Sie mit uns sprechen.",app_p2:"Laden Sie sie kostenlos herunter und probieren Sie sie aus.",app_btn:"App-Download",app_box_h:"Für Türen und Tore",app_box_p:"Erst planen, dann anfragen. Zeigen Sie uns Ihren Plan. Wir bauen das Stück nach Maß.",gal_h:"Unsere Arbeiten",gal_lead:"Eine Auswahl unserer Arbeiten.",
 course_h:"Schmiedekurse",
 course_p1:"Wir wollen die Schmiede für Kurse im traditionellen Metallhandwerk öffnen.",
 course_p2:"So kann jeder lernen, eigene Werkzeuge zu bauen. Und das Handwerk geht an die nächste Generation.",
