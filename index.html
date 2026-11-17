@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ateliers Faíscas Voadoras – Metalurgia e Forja em Colos, Odemira</title>
+<meta name="description" content="Serralharia artística e forja em Colos, Odemira. Portões, guardas, escadas, pérgolas, esculturas e facas forjadas à mão.">
+<meta property="og:title" content="Ateliers Faíscas Voadoras">
+<meta property="og:description" content="Metalurgia e forja em Colos, Odemira.">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --bg:#121110; --bg2:#1a1816; --card:#201d1a; --line:#332e29;
+  --text:#efe6da; --muted:#a89d90; --fire:#e8731a; --fire2:#ffb25b;
+  --head:Georgia,"Times New Roman",serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;font-size:17px}
+img{max-width:100%;display:block}
+a{color:var(--fire2)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.15}
+h2{font-size:clamp(28px,4vw,42px);margin-bottom:14px}
+h2::after{content:"";display:block;width:56px;height:3px;background:var(--fire);margin-top:14px}
+section{padding:84px 0}
+.alt{background:var(--bg2)}
+.lead{color:var(--muted);max-width:680px;margin-bottom:34px}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(18,17,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:var(--head);font-weight:700;font-size:18px;color:var(--text);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.logo span{color:var(--fire)}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:var(--text);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--fire2)}
+.lang{display:flex;gap:4px}
+.lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:4px 9px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600}
+.lang button.on{background:var(--fire);border-color:var(--fire);color:#111}
+@media(max-width:820px){nav a{display:none}}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+  background:radial-gradient(ellipse at 70% 90%,rgba(232,115,26,.28),transparent 55%),var(--bg);padding-top:64px}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+#sparks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.kicker{color:var(--fire2);letter-spacing:.2em;text-transform:uppercase;font-size:13px;font-weight:600;margin-bottom:18px}
+.hero h1{font-size:clamp(40px,8vw,84px);text-transform:uppercase;letter-spacing:.02em;margin-bottom:22px}
+.hero h1 em{color:var(--fire);font-style:normal}
+.hero p{font-size:20px;color:#d8cdbf;max-width:620px;margin-bottom:34px}
+.btn{display:inline-block;background:var(--fire);color:#111;padding:14px 28px;border-radius:4px;font-weight:700;text-decoration:none;border:0;font-size:16px;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--fire2)}
+.btn.ghost{background:none;border:1px solid var(--fire);color:var(--fire2);margin-left:10px}
+.btn.ghost:hover{background:rgba(232,115,26,.15)}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:26px}
+.card h3{font-size:21px;margin-bottom:8px;color:var(--fire2)}
+.card p{color:var(--muted);font-size:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.two p+p{margin-top:14px}
+
+/* Gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#26211c,#17140f);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ph:hover img{transform:scale(1.05)}
+.ph span{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.8));font-size:14px}
+.ph.empty::before{content:"📷";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;opacity:.25}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:44px}
+@media(max-width:820px){.contact{grid-template-columns:1fr}}
+.info p{margin-bottom:12px}
+.info strong{display:block;color:var(--fire2);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+form{display:grid;gap:14px}
+input,textarea{width:100%;background:var(--card);border:1px solid var(--line);color:var(--text);padding:13px;border-radius:4px;font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--fire);border-color:var(--fire)}
+textarea{min-height:130px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.small{font-size:13px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+#privacy{display:none;margin-top:20px;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:6px}
+#privacy:target{display:block}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ph img{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="logo">Faíscas <span>Voadoras</span></a>
+    <nav>
+      <a href="#sobre" data-i18n="nav_about"></a>
+      <a href="#servicos" data-i18n="nav_services"></a>
+      <a href="#galeria" data-i18n="nav_gallery"></a>
+      <a href="#contacto" data-i18n="nav_contact"></a>
+      <div class="lang">
+        <button data-l="pt">PT</button><button data-l="en">EN</button><button data-l="de">DE</button>
+      </div>
+    </nav>
+    <div class="lang" id="langMobile" style="display:none">
+      <button data-l="pt">PT</button><button data-l="en">EN</button><button data-l="de">DE</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding-bottom:0">
+  <img class="bg" src="img/hero.jpg" alt="" onerror="this.remove()">
+  <canvas id="sparks" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="kicker" data-i18n="hero_kicker"></div>
+    <h1>Faíscas <em>Voadoras</em></h1>
+    <p data-i18n="hero_text"></p>
+    <a class="btn" href="#contacto" data-i18n="hero_cta"></a>
+    <a class="btn ghost" href="#galeria" data-i18n="hero_cta2"></a>
+  </div>
+</section>
+
+<section id="sobre" class="alt">
+  <div class="wrap two">
+    <div>
+      <h2 data-i18n="about_h"></h2>
+      <p data-i18n="about_p1"></p>
+      <p data-i18n="about_p2"></p>
+      <p data-i18n="about_p3"></p>
+    </div>
+    <div class="ph" id="aboutImg"><img src="img/oficina.jpg" alt="Ateliers Faíscas Voadoras" onerror="this.parentNode.classList.add('empty');this.remove()"></div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="wrap">
+    <h2 data-i18n="srv_h"></h2>
+    <p class="lead" data-i18n="srv_lead"></p>
+    <div class="grid">
+      <div class="card"><h3 data-i18n="s1_h"></h3><p data-i18n="s1_p"></p></div>
+      <div class="card"><h3 data-i18n="s2_h"></h3><p data-i18n="s2_p"></p></div>
+      <div class="card"><h3 data-i18n="s3_h"></h3><p data-i18n="s3_p"></p></div>
+      <div class="card"><h3 data-i18n="s4_h"></h3><p data-i18n="s4_p"></p></div>
+      <div class="card"><h3 data-i18n="s5_h"></h3><p data-i18n="s5_p"></p></div>
+      <div class="card"><h3 data-i18n="s6_h"></h3><p data-i18n="s6_p"></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="alt">
+  <div class="wrap">
+    <h2 data-i18n="gal_h"></h2>
+    <p class="lead" data-i18n="gal_lead"></p>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<section id="cursos">
+  <div class="wrap two">
+    <div>
+      <h2 data-i18n="course_h"></h2>
+      <p data-i18n="course_p1"></p>
+      <p data-i18n="course_p2"></p>
+    </div>
+    <div class="card"><h3 data-i18n="coop_h"></h3><p data-i18n="coop_p"></p>
+      <p style="margin-top:12px"><a href="https://cooperativadaterra.pt/" target="_blank" rel="noopener">cooperativadaterra.pt</a></p></div>
+  </div>
+</section>
+
+<section id="contacto" class="alt">
+  <div class="wrap">
+    <h2 data-i18n="ct_h"></h2>
+    <p class="lead" data-i18n="ct_lead"></p>
+    <div class="contact">
+      <div class="info">
+        <p><strong data-i18n="ct_addr"></strong>Quinta do Coito Grande 1<br>7630-291 Colos, Odemira<br>Portugal<br>
+          <a href="https://www.google.com/maps/search/?api=1&query=Quinta+do+Coito+Grande+1+7630-291+Colos" target="_blank" rel="noopener" data-i18n="ct_map"></a></p>
+        <p><strong data-i18n="ct_phone"></strong><a href="tel:+351925647762">+351 925 647 762</a></p>
+        <p><strong>WhatsApp</strong><a href="https://wa.me/351925647762" target="_blank" rel="noopener" data-i18n="ct_wa"></a></p>
+        <p><strong data-i18n="ct_who"></strong>André Peisker · André Ribeiro</p>
+      </div>
+      <!-- Formspree: Konto anlegen, Formular erstellen, DEINE_ID ersetzen -->
+      <form action="https://formspree.io/f/DEINE_ID" method="POST">
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+        <input type="text" name="name" required data-i18n-ph="f_name" autocomplete="name">
+        <input type="email" name="email" required data-i18n-ph="f_mail" autocomplete="email">
+        <input type="tel" name="telefone" data-i18n-ph="f_tel" autocomplete="tel">
+        <textarea name="mensagem" required data-i18n-ph="f_msg"></textarea>
+        <label class="small"><input type="checkbox" required style="width:auto;margin-right:8px"><span data-i18n="f_consent"></span> <a href="#privacy" data-i18n="f_privacy_link"></a></label>
+        <button class="btn" type="submit" data-i18n="f_send"></button>
+      </form>
+    </div>
+    <div id="privacy">
+      <h3 data-i18n="pv_h" style="margin-bottom:10px"></h3>
+      <p class="small" data-i18n="pv_p"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Ateliers Faíscas Voadoras · Colos, Odemira</span>
+    <span><span data-i18n="foot_coop"></span> <a href="https://cooperativadaterra.pt/" target="_blank" rel="noopener">Cooperativa Integral da Terra</a> · <a href="#privacy" data-i18n="f_privacy_link"></a></span>
+  </div>
+</footer>
+
+<script>
+var T={
+pt:{
+nav_about:"Sobre",nav_services:"Serviços",nav_gallery:"Trabalhos",nav_contact:"Contacto",
+hero_kicker:"Metalurgia e forja · Colos, Odemira",
+hero_text:"Serralharia à medida, do desenho à montagem. Tradição do ferro forjado com tecnologia moderna.",
+hero_cta:"Pedir orçamento",hero_cta2:"Ver trabalhos",
+about_h:"Sobre nós",
+about_p1:"Os Ateliers Faíscas Voadoras são uma oficina de metalurgia e forja, fundada em 2023 por André Peisker e André Ribeiro em Colos, Odemira.",
+about_p2:"Queremos preservar a serralharia tradicional e os seus métodos. Juntamos-lhe tecnologia moderna.",
+about_p3:"Cada peça nasce de um desenho original, pensado para a tarefa e para o cliente.",
+srv_h:"Serviços",srv_lead:"Trabalho por medida, do desenho à instalação.",
+s1_h:"Portões e portas",s1_p:"Portões e portas em ferro, feitos à medida da sua entrada.",
+s2_h:"Guardas e varandas",s2_p:"Guardas, corrimãos e varandas em ferro forjado.",
+s3_h:"Escadas e passadiços",s3_p:"Escadas, passadiços e interiores completos em ferro, vidro e madeira.",
+s4_h:"Alpendres, pérgolas e vedações",s4_p:"Estruturas para exterior que duram décadas.",
+s5_h:"Escultura e decoração",s5_p:"Peças decorativas forjadas à mão, como raias, rosas e relevos martelados.",
+s6_h:"Facas e ferramentas",s6_p:"Facas e ferramentas forjadas à mão.",
+gal_h:"Trabalhos",gal_lead:"Uma seleção dos nossos trabalhos.",
+course_h:"Cursos de forja",
+course_p1:"Queremos abrir a forja a cursos de metalurgia tradicional.",
+course_p2:"Assim, cada um pode aprender a fazer as suas próprias ferramentas. E o ofício passa à geração seguinte.",
+coop_h:"Parte de uma cooperativa",
+coop_p:"Desde setembro de 2023 fazemos parte da Cooperativa Integral da Terra. Partilhamos a oficina com outros projetos, num espaço de colaboração e entreajuda.",
+ct_h:"Contacto",ct_lead:"Conte-nos o que precisa. Respondemos o mais depressa possível.",
+ct_addr:"Morada",ct_map:"Abrir no mapa",ct_phone:"Telefone",ct_wa:"Escrever no WhatsApp",ct_who:"Ateliers",
+f_name:"Nome",f_mail:"E-mail",f_tel:"Telefone (opcional)",f_msg:"A sua mensagem",
+f_consent:"Aceito que os meus dados sejam usados para responder ao pedido.",f_privacy_link:"Privacidade",f_send:"Enviar",
+pv_h:"Privacidade",pv_p:"Este site não usa cookies nem rastreio. Se enviar o formulário, os seus dados passam pelo serviço Formspree e chegam por e-mail ao atelier. Usamo-los só para responder ao seu pedido. Pode pedir a eliminação a qualquer momento por telefone ou WhatsApp.",
+foot_coop:"Parte da"
+},
+en:{
+nav_about:"About",nav_services:"Services",nav_gallery:"Work",nav_contact:"Contact",
+hero_kicker:"Metalwork and blacksmithing · Colos, Odemira",
+hero_text:"Made-to-measure metalwork, from design to installation. Traditional forged iron meets modern technology.",
+hero_cta:"Request a quote",hero_cta2:"See our work",
+about_h:"About us",
+about_p1:"Ateliers Faíscas Voadoras (Flying Sparks) is a metalwork and blacksmith workshop. André Peisker and André Ribeiro founded it in 2023 in Colos, Odemira.",
+about_p2:"We want to preserve traditional metalwork and its methods. We combine them with modern technology.",
+about_p3:"Every piece starts from an original design, made for the task and the customer.",
+srv_h:"Services",srv_lead:"Made-to-measure work, from design to installation.",
+s1_h:"Gates and doors",s1_p:"Iron gates and doors, made to fit your entrance.",
+s2_h:"Railings and balconies",s2_p:"Railings, handrails and balconies in forged iron.",
+s3_h:"Staircases and walkways",s3_p:"Staircases, walkways and whole interiors in iron, glass and wood.",
+s4_h:"Porches, pergolas and fences",s4_p:"Outdoor structures built to last for decades.",
+s5_h:"Sculpture and decoration",s5_p:"Hand-forged decorative pieces, such as manta rays, roses and hammered reliefs.",
+s6_h:"Knives and tools",s6_p:"Hand-forged knives and tools.",
+gal_h:"Our work",gal_lead:"A selection of our work.",
+course_h:"Forging courses",
+course_p1:"We hope to open the forge to courses in traditional metalworking.",
+course_p2:"That way people can learn to make their own tools. And the craft passes to the next generation.",
+coop_h:"Part of a cooperative",
+coop_p:"We have been part of Cooperativa Integral da Terra since September 2023. We share the workshop with other projects, in a place of collaboration and mutual support.",
+ct_h:"Contact",ct_lead:"Tell us what you need. We reply as soon as we can.",
+ct_addr:"Address",ct_map:"Open in maps",ct_phone:"Phone",ct_wa:"Message on WhatsApp",ct_who:"Ateliers",
+f_name:"Name",f_mail:"Email",f_tel:"Phone (optional)",f_msg:"Your message",
+f_consent:"I agree that my data is used to answer my request.",f_privacy_link:"Privacy",f_send:"Send",
+pv_h:"Privacy",pv_p:"This site uses no cookies and no tracking. If you send the form, your data passes through the service Formspree and reaches the atelier by email. We use it only to answer your request. You can ask us to delete it at any time by phone or WhatsApp.",
+foot_coop:"Part of"
+},
+de:{
+nav_about:"Über uns",nav_services:"Leistungen",nav_gallery:"Arbeiten",nav_contact:"Kontakt",
+hero_kicker:"Metallbau und Schmiedearbeiten · Colos, Odemira",
+hero_text:"Metallbau nach Maß, von der Planung bis zur Montage. Traditionelles Schmiedeeisen trifft moderne Technik.",
+hero_cta:"Angebot anfragen",hero_cta2:"Arbeiten ansehen",
+about_h:"Über uns",
+about_p1:"Ateliers Faíscas Voadoras (Fliegende Funken) ist eine Werkstatt für Metallbau und Schmiedearbeiten. André Peisker und André Ribeiro haben sie 2023 in Colos, Odemira gegründet.",
+about_p2:"Wir wollen das traditionelle Handwerk und seine Methoden bewahren. Dazu nutzen wir moderne Technik.",
+about_p3:"Jedes Stück beginnt mit einem eigenen Entwurf. Er passt zur Aufgabe und zum Kunden.",
+srv_h:"Leistungen",srv_lead:"Arbeit nach Maß, von der Planung bis zur Montage.",
+s1_h:"Tore und Türen",s1_p:"Tore und Türen aus Eisen, passend für Ihren Eingang.",
+s2_h:"Geländer und Balkone",s2_p:"Geländer, Handläufe und Balkone aus geschmiedetem Eisen.",
+s3_h:"Treppen und Stege",s3_p:"Treppen, Stege und ganze Innenausbauten aus Eisen, Glas und Holz.",
+s4_h:"Vordächer, Pergolen und Zäune",s4_p:"Konstruktionen für draußen, die Jahrzehnte halten.",
+s5_h:"Skulptur und Dekoration",s5_p:"Von Hand geschmiedete Zierstücke, etwa Rochen, Rosen und gehämmerte Reliefs.",
+s6_h:"Messer und Werkzeug",s6_p:"Von Hand geschmiedete Messer und Werkzeuge.",
+gal_h:"Unsere Arbeiten",gal_lead:"Eine Auswahl unserer Arbeiten.",
+course_h:"Schmiedekurse",
+course_p1:"Wir wollen die Schmiede für Kurse im traditionellen Metallhandwerk öffnen.",
+course_p2:"So kann jeder lernen, eigene Werkzeuge zu bauen. Und das Handwerk geht an die nächste Generation.",
+coop_h:"Teil einer Genossenschaft",
+coop_p:"Seit September 2023 gehören wir zur Cooperativa Integral da Terra. Wir teilen die Werkstatt mit anderen Projekten. Es ist ein Ort der Zusammenarbeit und gegenseitigen Hilfe.",
+ct_h:"Kontakt",ct_lead:"Sagen Sie uns, was Sie brauchen. Wir melden uns so schnell wie möglich.",
+ct_addr:"Adresse",ct_map:"Auf der Karte öffnen",ct_phone:"Telefon",ct_wa:"Per WhatsApp schreiben",ct_who:"Ateliers",
+f_name:"Name",f_mail:"E-Mail",f_tel:"Telefon (optional)",f_msg:"Ihre Nachricht",
+f_consent:"Ich bin einverstanden, dass meine Daten zur Beantwortung meiner Anfrage genutzt werden.",f_privacy_link:"Datenschutz",f_send:"Senden",
+pv_h:"Datenschutz",pv_p:"Diese Seite nutzt keine Cookies und kein Tracking. Wenn Sie das Formular senden, laufen Ihre Daten über den Dienst Formspree und kommen per E-Mail im Atelier an. Wir nutzen sie nur für die Antwort. Sie können jederzeit per Telefon oder WhatsApp die Löschung verlangen.",
+foot_coop:"Teil der"
+}};
+
+var GAL=[
+ ["01-gelaender-rosen.jpg",{pt:"Guarda em ferro com rosas e copos-de-leite forjados",en:"Iron railing with forged roses and calla lilies",de:"Eisengeländer mit geschmiedeten Rosen und Callas"}],
+ ["02-portao-verde.jpg",{pt:"Portão de ferro verde com recortes decorativos",en:"Green iron gate with decorative cutouts",de:"Grünes Eisentor mit Zierausschnitten"}],
+ ["03-pergola.jpg",{pt:"Pérgola de ferro com espirais forjadas",en:"Iron pergola with forged spirals",de:"Eisenpergola mit geschmiedeten Spiralen"}],
+ ["04-passadico.jpg",{pt:"Passadiço de ferro e vidro",en:"Iron and glass walkway",de:"Steg aus Eisen und Glas"}],
+ ["05-escada.jpg",{pt:"Escada de ferro com degraus de madeira",en:"Iron staircase with wooden steps",de:"Eisentreppe mit Holzstufen"}],
+ ["06-rosas.jpg",{pt:"Rosas de ferro forjadas",en:"Forged iron roses",de:"Geschmiedete Eisenrosen"}],
+ ["07-alpendre.jpg",{pt:"Alpendre e guarda em ferro",en:"Iron porch and railing",de:"Vordach und Geländer aus Eisen"}],
+ ["08-elefante.jpg",{pt:"Relevo de elefante em metal martelado",en:"Hammered metal elephant relief",de:"Elefanten-Relief aus gehämmertem Metall"}],
+ ["09-faca.jpg",{pt:"Faca forjada à mão com cabo de madeira",en:"Hand-forged knife with wooden handle",de:"Handgeschmiedetes Messer mit Holzgriff"}]
+];
+
+var lang="pt";
+function setLang(l){
+  if(!T[l])l="pt"; lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll("[data-i18n]").forEach(function(e){e.textContent=T[l][e.getAttribute("data-i18n")]||""});
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(e){e.placeholder=T[l][e.getAttribute("data-i18n-ph")]||""});
+  document.querySelectorAll(".lang button").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-l")===l)});
+  document.querySelectorAll("#gal .ph").forEach(function(f,i){var t=GAL[i][1][l];f.querySelector("span").textContent=t;var im=f.querySelector("img");if(im)im.alt=t});
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+// Galerie aufbauen
+var g=document.getElementById("gal");
+GAL.forEach(function(it){
+  var d=document.createElement("figure");d.className="ph";
+  d.innerHTML='<img loading="lazy" src="img/'+it[0]+'" alt=""><span></span>';
+  d.querySelector("img").onerror=function(){d.classList.add("empty");this.remove()};
+  g.appendChild(d);
+});
+document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.getAttribute("data-l"))}});
+var m=window.matchMedia("(max-width:820px)");
+function mob(){document.getElementById("langMobile").style.display=m.matches?"flex":"none"}
+m.addEventListener("change",mob);mob();
+var start="pt";
+try{start=localStorage.getItem("lang")||""}catch(e){}
+if(!start){var n=(navigator.language||"pt").slice(0,2);start=T[n]?n:"pt"}
+setLang(start);
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+// Funken
+(function(){
+  if(window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  var c=document.getElementById("sparks"),x=c.getContext("2d"),P=[],W,H;
+  function rs(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+  rs();window.addEventListener("resize",rs);
+  function add(){P.push({x:W*(.55+Math.random()*.45),y:H+10,vx:(Math.random()-.7)*1.4,vy:-(1+Math.random()*2.6),l:1,s:1+Math.random()*2})}
+  function loop(){
+    x.clearRect(0,0,W,H);
+    if(P.length<70&&Math.random()<.5)add();
+    for(var i=P.length-1;i>=0;i--){
+      var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.005;p.l-=.006;
+      if(p.l<=0){P.splice(i,1);continue}
+      x.globalAlpha=p.l;x.fillStyle=p.l>.5?"#ffb25b":"#e8731a";
+      x.beginPath();x.arc(p.x,p.y,p.s,0,6.283);x.fill();
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+</body>
+</html>
