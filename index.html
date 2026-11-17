@@ -323,6 +323,7 @@ var GAL=[
  ["06-rosas.jpg",{pt:"Rosas de ferro forjadas",en:"Forged iron roses",de:"Geschmiedete Eisenrosen"}],
  ["07-alpendre.jpg",{pt:"Alpendre e guarda em ferro",en:"Iron porch and railing",de:"Vordach und Geländer aus Eisen"}],
  ["08-elefante.jpg",{pt:"Relevo de elefante em metal martelado",en:"Hammered metal elephant relief",de:"Elefanten-Relief aus gehämmertem Metall"}],
+ ["10-rochen.jpg",{pt:"Raia forjada à mão em ferro",en:"Hand-forged iron manta ray",de:"Handgeschmiedeter Rochen aus Eisen"}],
  ["09-faca.jpg",{pt:"Faca forjada à mão com cabo de madeira",en:"Hand-forged knife with wooden handle",de:"Handgeschmiedetes Messer mit Holzgriff"}]
 ];
 
@@ -333,15 +334,15 @@ function setLang(l){
   document.querySelectorAll("[data-i18n]").forEach(function(e){e.textContent=T[l][e.getAttribute("data-i18n")]||""});
   document.querySelectorAll("[data-i18n-ph]").forEach(function(e){e.placeholder=T[l][e.getAttribute("data-i18n-ph")]||""});
   document.querySelectorAll(".lang button").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-l")===l)});
-  document.querySelectorAll("#gal .ph").forEach(function(f,i){var t=GAL[i][1][l];f.querySelector("span").textContent=t;var im=f.querySelector("img");if(im)im.alt=t});
+  document.querySelectorAll("#gal .ph").forEach(function(f){var t=GAL[+f.getAttribute("data-i")][1][l];f.querySelector("span").textContent=t;var im=f.querySelector("img");if(im)im.alt=t});
   try{localStorage.setItem("lang",l)}catch(e){}
 }
 // Galerie aufbauen
 var g=document.getElementById("gal");
-GAL.forEach(function(it){
-  var d=document.createElement("figure");d.className="ph";
+GAL.forEach(function(it,i){
+  var d=document.createElement("figure");d.className="ph";d.setAttribute("data-i",i);
   d.innerHTML='<img loading="lazy" src="img/'+it[0]+'" alt=""><span></span>';
-  d.querySelector("img").onerror=function(){d.classList.add("empty");this.remove()};
+  d.querySelector("img").onerror=function(){d.remove()};
   g.appendChild(d);
 });
 document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.getAttribute("data-l"))}});
