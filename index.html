@@ -141,7 +141,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <p data-i18n="about_p2"></p>
       <p data-i18n="about_p3"></p>
     </div>
-    <div class="ph" id="aboutImg"><video id="aboutVid" controls muted playsinline preload="metadata" poster="img/oficina.jpg"><source src="img/oficina.mp4" type="video/mp4"></video></div>
+    <div class="ph" id="aboutImg"><video id="aboutVid" controls muted loop playsinline preload="metadata" poster="img/oficina.jpg"><source src="img/oficina.mp4" type="video/mp4"></video></div>
   </div>
 </section>
 
@@ -366,6 +366,16 @@ document.getElementById("yr").textContent=new Date().getFullYear();
 (function(){
   var v=document.getElementById("aboutVid"),src=v&&v.querySelector("source");
   if(!src)return;
+  // Autostart beim Hineinscrollen, Pause beim Verlassen
+  if("IntersectionObserver" in window){
+    v.muted=true;
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}
+        else v.pause();
+      });
+    },{threshold:0.5}).observe(v);
+  }
   src.addEventListener("error",function(){
     var box=document.getElementById("aboutImg");
     box.innerHTML='<img src="img/oficina.jpg" alt="Ateliers Faíscas Voadoras">';
