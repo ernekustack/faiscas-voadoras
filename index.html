@@ -37,16 +37,19 @@ nav{display:flex;gap:22px;align-items:center}
 nav a{color:var(--text);text-decoration:none;font-size:15px}
 nav a:hover{color:var(--fire2)}
 .lang{display:flex;gap:4px}
-.lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:4px 9px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600}
+.lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:0 9px;height:34px;line-height:1;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600}
 .lang button.on{background:var(--fire);border-color:var(--fire);color:#111}
-nav a.app{background:var(--fire);color:#111;padding:7px 14px;border-radius:4px;font-weight:700}
+nav a.app{background:var(--fire);color:#111;padding:0 14px;height:34px;display:inline-flex;align-items:center;line-height:1;white-space:nowrap;border-radius:4px;font-weight:700}
 nav a.app:hover{background:var(--fire2);color:#111}
-@media(max-width:820px){nav a{display:none}nav a.app{display:inline-block}nav .lang{display:none}}
+@media(max-width:820px){nav a{display:none}nav a.app{display:inline-flex;height:30px;padding:0 10px;font-size:13px}nav .lang{display:none}
+.bar{gap:8px}.lang button{height:30px;padding:0 7px}.logo{font-size:14px;letter-spacing:.02em;white-space:nowrap;min-width:0}}
+@media(max-width:480px){.wrap{padding:0 14px}.logo{font-size:11.5px}.lang{gap:3px}.lang button{padding:0 5px;font-size:12px}nav a.app{padding:0 8px;font-size:12px}}
+@media(max-width:600px){.hero .btn.ghost{margin-left:0;margin-top:12px}}
 
 /* Hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
   background:radial-gradient(ellipse at 70% 90%,rgba(232,115,26,.28),transparent 55%),var(--bg);padding-top:64px}
-.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
 #sparks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero .wrap{position:relative;z-index:2;width:100%}
 .kicker{color:var(--fire2);letter-spacing:.2em;text-transform:uppercase;font-size:13px;font-weight:600;margin-bottom:18px}
@@ -71,6 +74,8 @@ nav a.app:hover{background:var(--fire2);color:#111}
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#26211c,#17140f);border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ph video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+#aboutImg{aspect-ratio:16/9}
 .ph:hover img{transform:scale(1.05)}
 .ph span{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.8));font-size:14px}
 .ph.empty::before{content:"📷";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;opacity:.25}
@@ -124,6 +129,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <p data-i18n="hero_text"></p>
     <a class="btn" href="#contacto" data-i18n="hero_cta"></a>
     <a class="btn ghost" href="#galeria" data-i18n="hero_cta2"></a>
+    <p style="margin:24px 0 0;font-size:16px"><a href="#app" data-i18n="hero_app"></a></p>
   </div>
 </section>
 
@@ -135,7 +141,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <p data-i18n="about_p2"></p>
       <p data-i18n="about_p3"></p>
     </div>
-    <div class="ph" id="aboutImg"><img src="img/oficina.jpg" alt="Ateliers Faíscas Voadoras" onerror="this.parentNode.classList.add('empty');this.remove()"></div>
+    <div class="ph" id="aboutImg"><video id="aboutVid" controls muted playsinline preload="metadata" poster="img/oficina.jpg"><source src="img/oficina.mp4" type="video/mp4"></video></div>
   </div>
 </section>
 
@@ -144,7 +150,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <h2 data-i18n="srv_h"></h2>
     <p class="lead" data-i18n="srv_lead"></p>
     <div class="grid">
-      <div class="card"><h3 data-i18n="s1_h"></h3><p data-i18n="s1_p"></p></div>
+      <div class="card"><h3 data-i18n="s1_h"></h3><p data-i18n="s1_p"></p><p style="margin-top:12px"><a href="#app" data-i18n="s1_link"></a></p></div>
       <div class="card"><h3 data-i18n="s2_h"></h3><p data-i18n="s2_p"></p></div>
       <div class="card"><h3 data-i18n="s3_h"></h3><p data-i18n="s3_p"></p></div>
       <div class="card"><h3 data-i18n="s4_h"></h3><p data-i18n="s4_p"></p></div>
@@ -227,7 +233,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <script>
 var T={
 pt:{
-nav_app:"Descarregar app",nav_about:"Sobre",nav_services:"Serviços",nav_gallery:"Trabalhos",nav_contact:"Contacto",
+hero_app:"Novo: planeie portões e portas com a nossa app →",s1_link:"Planear com a app →",nav_app:"Descarregar app",nav_about:"Sobre",nav_services:"Serviços",nav_gallery:"Trabalhos",nav_contact:"Contacto",
 hero_kicker:"Metalurgia e forja · Colos, Odemira",
 hero_text:"Serralharia à medida, do desenho à montagem. Tradição do ferro forjado com tecnologia moderna.",
 hero_cta:"Pedir orçamento",hero_cta2:"Ver trabalhos",
@@ -242,13 +248,13 @@ s3_h:"Escadas e passadiços",s3_p:"Escadas, passadiços e interiores completos e
 s4_h:"Alpendres, pérgolas e vedações",s4_p:"Estruturas para exterior que duram décadas.",
 s5_h:"Escultura e decoração",s5_p:"Peças decorativas forjadas à mão, como raias, rosas e relevos martelados.",
 s6_h:"Facas e ferramentas",s6_p:"Facas e ferramentas forjadas à mão.",
-app_h:"App de planeamento",app_p1:"Planeie as suas portas e portões no telemóvel. A app ajuda-o a preparar medidas e ideias antes de falar connosco.",app_p2:"Descarregue-a de graça e experimente.",app_btn:"Descarregar app",app_box_h:"Para portas e portões",app_box_p:"Pense primeiro, peça orçamento depois. Mostre-nos o seu plano e fazemos a peça à medida.",gal_h:"Trabalhos",gal_lead:"Uma seleção dos nossos trabalhos.",
+app_h:"Planeie o seu portão com a nossa app",app_p1:"Planeie as suas portas e portões no telemóvel. A app ajuda-o a preparar medidas e ideias antes de falar connosco.",app_p2:"Descarregue-a de graça e experimente.",app_btn:"Descarregar app",app_box_h:"Para portas e portões",app_box_p:"Pense primeiro, peça orçamento depois. Mostre-nos o seu plano e fazemos a peça à medida.",gal_h:"Trabalhos",gal_lead:"Uma seleção dos nossos trabalhos.",
 course_h:"Cursos de forja",
 course_p1:"Queremos abrir a forja a cursos de metalurgia tradicional.",
 course_p2:"Assim, cada um pode aprender a fazer as suas próprias ferramentas. E o ofício passa à geração seguinte.",
 coop_h:"Parte de uma cooperativa",
 coop_p:"Desde setembro de 2023 fazemos parte da Cooperativa Integral da Terra. Partilhamos a oficina com outros projetos, num espaço de colaboração e entreajuda.",
-ct_h:"Contacto",ct_lead:"Conte-nos o que precisa. Respondemos o mais depressa possível.",
+ct_h:"Contacto",ct_lead:"Conte-nos o que precisa. Respondemos o mais depressa possível. Já planeou o seu portão com a app? Conte-nos.",
 ct_addr:"Morada",ct_map:"Abrir no mapa",ct_phone:"Telefone",ct_wa:"Escrever no WhatsApp",ct_who:"Ateliers",
 f_name:"Nome",f_mail:"E-mail",f_tel:"Telefone (opcional)",f_msg:"A sua mensagem",
 f_consent:"Aceito que os meus dados sejam usados para responder ao pedido.",f_privacy_link:"Privacidade",f_send:"Enviar",
@@ -256,7 +262,7 @@ pv_h:"Privacidade",pv_p:"Este site não usa cookies nem rastreio. Se enviar o fo
 foot_coop:"Parte da"
 },
 en:{
-nav_app:"App download",nav_about:"About",nav_services:"Services",nav_gallery:"Work",nav_contact:"Contact",
+hero_app:"New: plan gates and doors with our app →",s1_link:"Plan it with the app →",nav_app:"App download",nav_about:"About",nav_services:"Services",nav_gallery:"Work",nav_contact:"Contact",
 hero_kicker:"Metalwork and blacksmithing · Colos, Odemira",
 hero_text:"Made-to-measure metalwork, from design to installation. Traditional forged iron meets modern technology.",
 hero_cta:"Request a quote",hero_cta2:"See our work",
@@ -271,13 +277,13 @@ s3_h:"Staircases and walkways",s3_p:"Staircases, walkways and whole interiors in
 s4_h:"Porches, pergolas and fences",s4_p:"Outdoor structures built to last for decades.",
 s5_h:"Sculpture and decoration",s5_p:"Hand-forged decorative pieces, such as manta rays, roses and hammered reliefs.",
 s6_h:"Knives and tools",s6_p:"Hand-forged knives and tools.",
-app_h:"Planning app",app_p1:"Plan your doors and gates on your phone. The app helps you prepare measurements and ideas before you talk to us.",app_p2:"Download it for free and try it.",app_btn:"App download",app_box_h:"For doors and gates",app_box_p:"Plan first, ask for a quote after. Show us your plan and we build the piece to measure.",gal_h:"Our work",gal_lead:"A selection of our work.",
+app_h:"Plan your gate with our app",app_p1:"Plan your doors and gates on your phone. The app helps you prepare measurements and ideas before you talk to us.",app_p2:"Download it for free and try it.",app_btn:"App download",app_box_h:"For doors and gates",app_box_p:"Plan first, ask for a quote after. Show us your plan and we build the piece to measure.",gal_h:"Our work",gal_lead:"A selection of our work.",
 course_h:"Forging courses",
 course_p1:"We hope to open the forge to courses in traditional metalworking.",
 course_p2:"That way people can learn to make their own tools. And the craft passes to the next generation.",
 coop_h:"Part of a cooperative",
 coop_p:"We have been part of Cooperativa Integral da Terra since September 2023. We share the workshop with other projects, in a place of collaboration and mutual support.",
-ct_h:"Contact",ct_lead:"Tell us what you need. We reply as soon as we can.",
+ct_h:"Contact",ct_lead:"Tell us what you need. We reply as soon as we can. Already planned your gate with the app? Tell us about it.",
 ct_addr:"Address",ct_map:"Open in maps",ct_phone:"Phone",ct_wa:"Message on WhatsApp",ct_who:"Ateliers",
 f_name:"Name",f_mail:"Email",f_tel:"Phone (optional)",f_msg:"Your message",
 f_consent:"I agree that my data is used to answer my request.",f_privacy_link:"Privacy",f_send:"Send",
@@ -285,7 +291,7 @@ pv_h:"Privacy",pv_p:"This site uses no cookies and no tracking. If you send the 
 foot_coop:"Part of"
 },
 de:{
-nav_app:"App-Download",nav_about:"Über uns",nav_services:"Leistungen",nav_gallery:"Arbeiten",nav_contact:"Kontakt",
+hero_app:"Neu: Tore und Türen mit unserer App planen →",s1_link:"Mit der App planen →",nav_app:"App-Download",nav_about:"Über uns",nav_services:"Leistungen",nav_gallery:"Arbeiten",nav_contact:"Kontakt",
 hero_kicker:"Metallbau und Schmiedearbeiten · Colos, Odemira",
 hero_text:"Metallbau nach Maß, von der Planung bis zur Montage. Traditionelles Schmiedeeisen trifft moderne Technik.",
 hero_cta:"Angebot anfragen",hero_cta2:"Arbeiten ansehen",
@@ -300,13 +306,13 @@ s3_h:"Treppen und Stege",s3_p:"Treppen, Stege und ganze Innenausbauten aus Eisen
 s4_h:"Vordächer, Pergolen und Zäune",s4_p:"Konstruktionen für draußen, die Jahrzehnte halten.",
 s5_h:"Skulptur und Dekoration",s5_p:"Von Hand geschmiedete Zierstücke, etwa Rochen, Rosen und gehämmerte Reliefs.",
 s6_h:"Messer und Werkzeug",s6_p:"Von Hand geschmiedete Messer und Werkzeuge.",
-app_h:"Planungs-App",app_p1:"Planen Sie Ihre Türen und Tore am Handy. Die App hilft Ihnen, Maße und Ideen vorzubereiten, bevor Sie mit uns sprechen.",app_p2:"Laden Sie sie kostenlos herunter und probieren Sie sie aus.",app_btn:"App-Download",app_box_h:"Für Türen und Tore",app_box_p:"Erst planen, dann anfragen. Zeigen Sie uns Ihren Plan. Wir bauen das Stück nach Maß.",gal_h:"Unsere Arbeiten",gal_lead:"Eine Auswahl unserer Arbeiten.",
+app_h:"Planen Sie Ihr Tor mit unserer App",app_p1:"Planen Sie Ihre Türen und Tore am Handy. Die App hilft Ihnen, Maße und Ideen vorzubereiten, bevor Sie mit uns sprechen.",app_p2:"Laden Sie sie kostenlos herunter und probieren Sie sie aus.",app_btn:"App-Download",app_box_h:"Für Türen und Tore",app_box_p:"Erst planen, dann anfragen. Zeigen Sie uns Ihren Plan. Wir bauen das Stück nach Maß.",gal_h:"Unsere Arbeiten",gal_lead:"Eine Auswahl unserer Arbeiten.",
 course_h:"Schmiedekurse",
 course_p1:"Wir wollen die Schmiede für Kurse im traditionellen Metallhandwerk öffnen.",
 course_p2:"So kann jeder lernen, eigene Werkzeuge zu bauen. Und das Handwerk geht an die nächste Generation.",
 coop_h:"Teil einer Genossenschaft",
 coop_p:"Seit September 2023 gehören wir zur Cooperativa Integral da Terra. Wir teilen die Werkstatt mit anderen Projekten. Es ist ein Ort der Zusammenarbeit und gegenseitigen Hilfe.",
-ct_h:"Kontakt",ct_lead:"Sagen Sie uns, was Sie brauchen. Wir melden uns so schnell wie möglich.",
+ct_h:"Kontakt",ct_lead:"Sagen Sie uns, was Sie brauchen. Wir melden uns so schnell wie möglich. Haben Sie Ihr Tor schon mit der App geplant? Erzählen Sie uns davon.",
 ct_addr:"Adresse",ct_map:"Auf der Karte öffnen",ct_phone:"Telefon",ct_wa:"Per WhatsApp schreiben",ct_who:"Ateliers",
 f_name:"Name",f_mail:"E-Mail",f_tel:"Telefon (optional)",f_msg:"Ihre Nachricht",
 f_consent:"Ich bin einverstanden, dass meine Daten zur Beantwortung meiner Anfrage genutzt werden.",f_privacy_link:"Datenschutz",f_send:"Senden",
@@ -354,6 +360,18 @@ try{start=localStorage.getItem("lang")||""}catch(e){}
 if(!start){var n=(navigator.language||"pt").slice(0,2);start=T[n]?n:"pt"}
 setLang(start);
 document.getElementById("yr").textContent=new Date().getFullYear();
+
+
+// Video-Platz: fehlt oficina.mp4, Bild oder Platzhalter zeigen
+(function(){
+  var v=document.getElementById("aboutVid"),src=v&&v.querySelector("source");
+  if(!src)return;
+  src.addEventListener("error",function(){
+    var box=document.getElementById("aboutImg");
+    box.innerHTML='<img src="img/oficina.jpg" alt="Ateliers Faíscas Voadoras">';
+    box.querySelector("img").onerror=function(){box.classList.add("empty");this.remove()};
+  });
+})();
 
 // Funken
 (function(){
