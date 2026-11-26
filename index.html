@@ -91,6 +91,18 @@ nav a.app:hover{background:var(--fire2);color:#111}
 #lbCap{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:14px;color:var(--muted)}
 @media(max-width:600px){#lb{padding:56px 8px}.lb-p{left:6px}.lb-n{right:6px}}
 
+.auftrag{background:radial-gradient(ellipse at 20% 50%,rgba(232,115,26,.14),transparent 60%),#0d0c0b;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.auf{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:center}
+.auf-img{display:block;padding:0;border:0;background:none;cursor:zoom-in}
+.auf-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.auf-img img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:4px}
+.auf-txt .kicker{margin-bottom:10px}
+.auf-txt .auf-big{font-family:var(--head);font-size:22px;line-height:1.45;color:var(--text);margin-bottom:18px}
+.auf-txt p{color:var(--muted);margin-bottom:12px}
+.auf-txt .btn{margin-top:14px}
+.auf-row .ph2{margin:0}
+@media(max-width:899px){.auf{grid-template-columns:1fr;gap:26px}}
+
 /* Cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:26px}
@@ -104,8 +116,12 @@ nav a.app:hover{background:var(--fire2);color:#111}
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#26211c,#17140f);border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.ph video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
-#aboutImg{aspect-ratio:16/9}
+.aboutfig{margin:0}
+.aboutbtn{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+#aboutImg{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:4px}
+.aboutfig figcaption{margin-top:10px;font-size:15px}
+.aboutfig figcaption a{color:var(--fire2);text-decoration:none}
+.aboutfig figcaption a:hover{text-decoration:underline}
 .ph:hover img{transform:scale(1.05)}
 .ph span{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.8));font-size:14px}
 .ph.empty::before{content:"📷";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;opacity:.25}
@@ -175,7 +191,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <p data-i18n="about_p2"></p>
       <p data-i18n="about_p3"></p>
     </div>
-    <div class="ph" id="aboutImg"><video id="aboutVid" controls muted loop playsinline preload="metadata" poster="img/oficina.jpg"><source src="img/oficina.mp4" type="video/mp4"></video></div>
+    <figure class="aboutfig"><button type="button" id="aboutBtn" class="aboutbtn"><img id="aboutImg" src="img/baum/baum-01.jpg" width="1600" height="1066" alt=""></button><figcaption><a href="#auftrag" id="aboutCap"></a></figcaption></figure>
   </div>
 </section>
 
@@ -212,6 +228,21 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="filters" id="filters" role="group"></div>
     <div class="masonry" id="gal"></div>
   </div>
+</section>
+
+<section id="auftrag" class="auftrag">
+  <div class="wrap auf">
+    <button type="button" class="auf-img" id="aufMain"><img src="img/baum/baum-05.jpg" width="1289" height="859" alt="" id="aufImg"></button>
+    <div class="auf-txt">
+      <div class="kicker" data-i18n="au_k"></div>
+      <h2 data-i18n="au_h"></h2>
+      <p class="auf-big" data-i18n="au_p1"></p>
+      <p data-i18n="au_p2"></p>
+      <p data-i18n="au_p3"></p>
+      <a class="btn" href="#contacto" data-i18n="au_btn"></a>
+    </div>
+  </div>
+  <div class="wrap"><div class="auf-row" id="aufRow"></div></div>
 </section>
 
 <section id="cursos">
@@ -289,7 +320,7 @@ s2_h:"Guardas e corrimãos",s2_p:"Guardas e corrimãos em ferro, para interior e
 s4_h:"Alpendres e pérgolas",s4_p:"Estruturas para exterior em ferro, feitas para durar.",
 s5_h:"Escultura e decoração",s5_p:"Peças decorativas forjadas à mão, como raias, rosas e relevos martelados.",
 s6_h:"Facas e machados",s6_p:"Facas e machados forjados à mão.",
-app_h:"Planeie o seu portão com a nossa app",app_p1:"Planeie as suas portas e portões no telemóvel. A app ajuda-o a preparar medidas e ideias antes de falar connosco.",app_p2:"Descarregue-a de graça e experimente.",app_btn:"Descarregar app",app_box_h:"Para portas e portões",app_box_p:"Pense primeiro, peça orçamento depois. Mostre-nos o seu plano e fazemos a peça à medida.",c_all:"Todos",c_tore:"Portões e portas",c_gelaender:"Guardas e corrimãos",c_vordaecher:"Alpendres e pérgolas",c_skulptur:"Escultura e decoração",c_messer:"Facas e machados",lb_x:"Fechar",lb_p:"Anterior",lb_n:"Seguinte",gal_h:"Trabalhos",gal_lead:"Uma seleção dos nossos trabalhos.",
+app_h:"Planeie o seu portão com a nossa app",app_p1:"Planeie as suas portas e portões no telemóvel. A app ajuda-o a preparar medidas e ideias antes de falar connosco.",app_p2:"Descarregue-a de graça e experimente.",app_btn:"Descarregar app",app_box_h:"Para portas e portões",app_box_p:"Pense primeiro, peça orçamento depois. Mostre-nos o seu plano e fazemos a peça à medida.",c_all:"Todos",c_tore:"Portões e portas",c_gelaender:"Guardas e corrimãos",c_vordaecher:"Alpendres e pérgolas",c_skulptur:"Escultura e decoração",c_messer:"Facas e machados",lb_x:"Fechar",lb_p:"Anterior",lb_n:"Seguinte",au_cap:"A Árvore, obra por encomenda – ver todas as fotos →",au_k:"Obra por encomenda",au_h:"A Árvore",au_p1:"Feita à mão em mais de 1000 horas, com aço, vidro, madeira e folha de ouro.",au_p2:"Criada para um cliente. Uma peça única.",au_p3:"Cada peça nasce dos seus desejos.",au_btn:"Peça a sua própria peça",au_alt:"Mesa A Árvore: tronco de aço escurecido, folhas em ouro e tampo de vidro",gal_h:"Trabalhos",gal_lead:"Uma seleção dos nossos trabalhos.",
 course_h:"Cursos de forja",
 course_p1:"Queremos abrir a forja a cursos de metalurgia tradicional.",
 course_p2:"Assim, cada um pode aprender a fazer as suas próprias ferramentas. E o ofício passa à geração seguinte.",
@@ -318,7 +349,7 @@ s2_h:"Railings and handrails",s2_p:"Railings and handrails in iron, inside and o
 s4_h:"Canopies and pergolas",s4_p:"Outdoor structures in iron, built to last.",
 s5_h:"Sculpture and decoration",s5_p:"Hand-forged decorative pieces, such as manta rays, roses and hammered reliefs.",
 s6_h:"Knives and axes",s6_p:"Hand-forged knives and axes.",
-app_h:"Plan your gate with our app",app_p1:"Plan your doors and gates on your phone. The app helps you prepare measurements and ideas before you talk to us.",app_p2:"Download it for free and try it.",app_btn:"App download",app_box_h:"For doors and gates",app_box_p:"Plan first, ask for a quote after. Show us your plan and we build the piece to measure.",c_all:"All",c_tore:"Gates and doors",c_gelaender:"Railings and handrails",c_vordaecher:"Canopies and pergolas",c_skulptur:"Sculpture and decoration",c_messer:"Knives and axes",lb_x:"Close",lb_p:"Previous",lb_n:"Next",gal_h:"Our work",gal_lead:"A selection of our work.",
+app_h:"Plan your gate with our app",app_p1:"Plan your doors and gates on your phone. The app helps you prepare measurements and ideas before you talk to us.",app_p2:"Download it for free and try it.",app_btn:"App download",app_box_h:"For doors and gates",app_box_p:"Plan first, ask for a quote after. Show us your plan and we build the piece to measure.",c_all:"All",c_tore:"Gates and doors",c_gelaender:"Railings and handrails",c_vordaecher:"Canopies and pergolas",c_skulptur:"Sculpture and decoration",c_messer:"Knives and axes",lb_x:"Close",lb_p:"Previous",lb_n:"Next",au_cap:"The Tree, commissioned work – see all photos →",au_k:"Commissioned work",au_h:"The Tree",au_p1:"Handmade over more than 1000 hours from steel, glass, wood and gold leaf.",au_p2:"Made for a client. One of a kind.",au_p3:"Every piece is made to your wishes.",au_btn:"Request your own piece",au_alt:"The Tree table: blackened steel trunk, gold leaves and a glass top",gal_h:"Our work",gal_lead:"A selection of our work.",
 course_h:"Forging courses",
 course_p1:"We hope to open the forge to courses in traditional metalworking.",
 course_p2:"That way people can learn to make their own tools. And the craft passes to the next generation.",
@@ -347,7 +378,7 @@ s2_h:"Geländer und Handläufe",s2_p:"Geländer und Handläufe aus Eisen, innen 
 s4_h:"Vordächer und Pergolen",s4_p:"Konstruktionen aus Eisen für draußen, gebaut für Jahrzehnte.",
 s5_h:"Skulptur und Dekoration",s5_p:"Von Hand geschmiedete Zierstücke, etwa Rochen, Rosen und gehämmerte Reliefs.",
 s6_h:"Messer und Beile",s6_p:"Von Hand geschmiedete Messer und Beile.",
-app_h:"Planen Sie Ihr Tor mit unserer App",app_p1:"Planen Sie Ihre Türen und Tore am Handy. Die App hilft Ihnen, Maße und Ideen vorzubereiten, bevor Sie mit uns sprechen.",app_p2:"Laden Sie sie kostenlos herunter und probieren Sie sie aus.",app_btn:"App-Download",app_box_h:"Für Türen und Tore",app_box_p:"Erst planen, dann anfragen. Zeigen Sie uns Ihren Plan. Wir bauen das Stück nach Maß.",c_all:"Alle",c_tore:"Tore und Türen",c_gelaender:"Geländer und Handläufe",c_vordaecher:"Vordächer und Pergolen",c_skulptur:"Skulptur und Dekoration",c_messer:"Messer und Beile",lb_x:"Schließen",lb_p:"Zurück",lb_n:"Weiter",gal_h:"Unsere Arbeiten",gal_lead:"Eine Auswahl unserer Arbeiten.",
+app_h:"Planen Sie Ihr Tor mit unserer App",app_p1:"Planen Sie Ihre Türen und Tore am Handy. Die App hilft Ihnen, Maße und Ideen vorzubereiten, bevor Sie mit uns sprechen.",app_p2:"Laden Sie sie kostenlos herunter und probieren Sie sie aus.",app_btn:"App-Download",app_box_h:"Für Türen und Tore",app_box_p:"Erst planen, dann anfragen. Zeigen Sie uns Ihren Plan. Wir bauen das Stück nach Maß.",c_all:"Alle",c_tore:"Tore und Türen",c_gelaender:"Geländer und Handläufe",c_vordaecher:"Vordächer und Pergolen",c_skulptur:"Skulptur und Dekoration",c_messer:"Messer und Beile",lb_x:"Schließen",lb_p:"Zurück",lb_n:"Weiter",au_cap:"Der Baum, Auftragsarbeit – alle Fotos ansehen →",au_k:"Auftragsarbeit",au_h:"Der Baum",au_p1:"In über 1000 Stunden Handarbeit aus Stahl, Glas, Holz und Blattgold gefertigt.",au_p2:"Für einen Kunden entstanden. Ein Unikat.",au_p3:"Jedes Stück entsteht nach Ihren Wünschen.",au_btn:"Ihr eigenes Stück anfragen",au_alt:"Tisch Der Baum: geschwärzter Stahlstamm, Blattgold und Glasplatte",gal_h:"Unsere Arbeiten",gal_lead:"Eine Auswahl unserer Arbeiten.",
 course_h:"Schmiedekurse",
 course_p1:"Wir wollen die Schmiede für Kurse im traditionellen Metallhandwerk öffnen.",
 course_p2:"So kann jeder lernen, eigene Werkzeuge zu bauen. Und das Handwerk geht an die nächste Generation.",
@@ -362,9 +393,10 @@ foot_coop:"Teil der"
 }};
 
 var IM=[["tore",1,1200,1600,640,853],["tore",2,1200,1600,640,853],["tore",3,1200,1600,640,853],["tore",4,1200,1600,640,853],["tore",5,1600,1200,640,480],["tore",6,1200,1600,640,853],["tore",7,1200,1600,640,853],["tore",8,1200,1600,640,853],["tore",9,1200,1600,640,853],["tore",10,1600,1200,640,480],["tore",11,1200,1600,640,853],["tore",12,1200,1600,640,853],["tore",13,1600,1200,640,480],["tore",14,1600,1200,640,480],["tore",15,1600,1200,640,480],["tore",16,1200,1600,640,853],["tore",17,1200,1600,640,853],["tore",18,1600,1200,640,480],["tore",19,1200,1600,640,853],["tore",20,1200,1600,640,853],["tore",21,1600,1200,640,480],["gelaender",1,1600,1200,640,480],["gelaender",2,1600,1200,640,480],["gelaender",3,1600,1200,640,480],["gelaender",4,1204,1600,640,850],["gelaender",5,1204,1600,640,850],["vordaecher",1,1600,1200,640,480],["vordaecher",2,1600,1200,640,480],["vordaecher",3,1200,1600,640,853],["vordaecher",4,1600,1200,640,480],["vordaecher",5,1200,1600,640,853],["vordaecher",6,1200,1600,640,853],["vordaecher",7,1200,1600,640,853],["vordaecher",8,1200,1600,640,853],["vordaecher",9,720,900,640,800],["skulptur",1,720,720,640,640],["skulptur",2,720,720,640,640],["skulptur",3,720,720,640,640],["skulptur",4,225,456,225,456],["skulptur",5,1205,1600,640,850],["skulptur",6,720,960,640,853],["skulptur",7,1387,925,640,427],["skulptur",8,1440,960,640,427],["skulptur",9,1399,933,640,427],["skulptur",10,928,1392,640,960],["messer",1,1280,640,640,320],["messer",2,960,720,640,480],["messer",3,960,720,640,480],["messer",4,720,960,640,853],["messer",5,720,900,640,800],["messer",6,960,960,640,640],["messer",7,720,720,640,640],["messer",8,720,900,640,800],["messer",9,720,720,640,640],["messer",10,720,900,640,800],["messer",11,720,960,640,853],["messer",12,720,900,640,800],["messer",13,720,960,640,853]];
+var AU=[["baum",1,1600,1066,640,426],["baum",2,1066,1600,640,961],["baum",3,864,1296,640,960],["baum",4,1296,864,640,427],["baum",5,1289,859,640,427],["baum",6,854,1281,640,960]];
 var CATS=["tore","gelaender","vordaecher","skulptur","messer"],cur="all",list=[],lbI=0;
 function pad(n){return n<10?"0"+n:""+n}
-function cname(c){return T[lang]["c_"+c]}
+function cname(c){return c==="baum"?T[lang].au_h:T[lang]["c_"+c]}
 function renderFilters(){
   var f=document.getElementById("filters");f.innerHTML="";
   ["all"].concat(CATS).forEach(function(c){
@@ -377,15 +409,15 @@ function renderFilters(){
 }
 function renderGrid(){
   var g=document.getElementById("gal");g.innerHTML="";
-  list=IM.filter(function(i){return cur==="all"||i[0]===cur});
-  list.forEach(function(it,idx){
+  var gl=IM.filter(function(i){return cur==="all"||i[0]===cur});list=gl;
+  gl.forEach(function(it,idx){
     var b=document.createElement("button");b.type="button";b.className="ph2";b.setAttribute("aria-label",cname(it[0]));
     var im=new Image();im.width=it[4];im.height=it[5];im.alt=cname(it[0]);
     im.src="img/galerie/thumb/"+it[0]+"-"+pad(it[1])+".jpg";
-    b.appendChild(im);var ar=it[4]/it[5],H=window.innerWidth<600?130:210;b.style.width=(ar*H)+"px";b.style.flexGrow=ar*100;b.onclick=function(){openLb(idx)};g.appendChild(b);
+    b.appendChild(im);var ar=it[4]/it[5],H=window.innerWidth<600?130:210;b.style.width=(ar*H)+"px";b.style.flexGrow=ar*100;b.onclick=function(){list=gl;openLb(idx)};g.appendChild(b);
   });
 }
-function lbSrc(it){return "img/galerie/"+it[0]+"-"+pad(it[1])+".jpg"}
+function lbSrc(it){return it[0]==="baum"?"img/baum/baum-"+pad(it[1])+".jpg":"img/galerie/"+it[0]+"-"+pad(it[1])+".jpg"}
 function showLb(){
   var it=list[lbI],im=document.getElementById("lbImg");
   im.src=lbSrc(it);im.alt=cname(it[0]);
@@ -395,8 +427,22 @@ function showLb(){
 function openLb(i){lbI=i;showLb();document.getElementById("lb").hidden=false;document.body.style.overflow="hidden";document.getElementById("lbX").focus()}
 function closeLb(){document.getElementById("lb").hidden=true;document.body.style.overflow=""}
 function stepLb(d){lbI=(lbI+d+list.length)%list.length;showLb()}
+function renderAuf(){
+  var r=document.getElementById("aufRow");r.innerHTML="";
+  AU.forEach(function(it,k){
+    if(k===0||k===4)return;
+    var b=document.createElement("button");b.type="button";b.className="ph2";b.setAttribute("aria-label",T[lang].au_h);
+    var im=new Image();im.width=it[4];im.height=it[5];im.alt=T[lang].au_alt;im.src="img/baum/thumb/baum-"+pad(it[1])+".jpg";
+    var ar=it[4]/it[5],H=window.innerWidth<600?130:190;b.style.width=(ar*H)+"px";b.style.flexGrow=ar*100;
+    b.appendChild(im);b.onclick=function(){list=AU;openLb(k)};r.appendChild(b);
+  });
+  document.getElementById("aufMain").onclick=function(){list=AU;openLb(4)};
+  document.getElementById("aboutBtn").onclick=function(){list=AU;openLb(0)};
+  document.getElementById("aboutImg").alt=T[lang].au_alt;document.getElementById("aboutCap").textContent=T[lang].au_cap;
+}
 function galLang(){
-  renderFilters();renderGrid();
+  renderFilters();renderGrid();renderAuf();
+  document.getElementById("aufImg").alt=T[lang].au_alt;
   document.getElementById("lbX").setAttribute("aria-label",T[lang].lb_x);
   document.getElementById("lbP").setAttribute("aria-label",T[lang].lb_p);
   document.getElementById("lbN").setAttribute("aria-label",T[lang].lb_n);
@@ -439,27 +485,6 @@ setLang(start);
 window.addEventListener("load",heroLogoW);window.addEventListener("resize",heroLogoW);
 document.getElementById("yr").textContent=new Date().getFullYear();
 
-
-// Video-Platz: fehlt oficina.mp4, Bild oder Platzhalter zeigen
-(function(){
-  var v=document.getElementById("aboutVid"),src=v&&v.querySelector("source");
-  if(!src)return;
-  // Autostart beim Hineinscrollen, Pause beim Verlassen
-  if("IntersectionObserver" in window){
-    v.muted=true;
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}
-        else v.pause();
-      });
-    },{threshold:0.5}).observe(v);
-  }
-  src.addEventListener("error",function(){
-    var box=document.getElementById("aboutImg");
-    box.innerHTML='<img src="img/oficina.jpg" alt="Ateliers Faíscas Voadoras">';
-    box.querySelector("img").onerror=function(){box.classList.add("empty");this.remove()};
-  });
-})();
 
 // Funken
 (function(){
